@@ -126,5 +126,10 @@ plt.title("Classifier outputs")
 plt.show()
 ## Section 4: Experiment with different input parameters.
 # a) What is the single best parameter for VAD classification in the test utterance?
+#    Template
+
 # b) What is the worst performing single parameter?
+#    Template
+
 # c) What other features could be useful in VAD?
+#    Template

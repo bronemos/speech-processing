@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 
-def ex1_windowing(data, frame_length, hop_size, windowing_function):
+def ex1_windowing_solution(data, frame_length, hop_size, windowing_function):
     data = np.array(data)
     number_of_frames = 1 + int(
         np.floor((len(data) - frame_length) / hop_size)
