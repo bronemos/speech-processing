@@ -4,7 +4,7 @@ import scipy.signal as sig
 import numpy as np
 import ex1_windowing_solution as win
 
-import ex2_fundf_functions as fundf
+import ex2_fundf_functions_solution as fundf
 import matplotlib.pyplot as pl
 
 """
@@ -37,7 +37,7 @@ frame_length = int(np.around(0.025 * Fs))  # 25ms in samples
 hop_size = int(np.around(0.0125 * Fs))  # 12.5 ms in samples (50% overlap)
 window_types = ("rect", "hann", "cosine", "hamming")
 frame_matrix = win.ex1_windowing(
-    in_sig, frame_length, hop_size, window_types[1]
+    in_sig, frame_length, hop_size, window_types[3]
 )  # Windowing
 
 

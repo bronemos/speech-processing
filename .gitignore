@@ -133,3 +133,5 @@ dmypy.json
 *.pdf
 Sounds
 *.png
+.vscode
+output_targets
