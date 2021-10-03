@@ -1,4 +1,3 @@
-# Functions for exercise 3 of the course Speech Processing course
 """
 Copyright 2021 Bernard Spiegl
 
@@ -14,6 +13,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
+# Functions for exercise 3 of the course Speech Processing course
 import scipy.signal as sig
 import numpy as np
 
