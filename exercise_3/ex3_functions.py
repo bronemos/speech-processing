@@ -1,19 +1,3 @@
-"""
-Copyright 2021 Bernard Spiegl
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
-
 # Functions for exercise 3 of the course Speech Processing course
 import scipy.signal as sig
 import numpy as np
@@ -80,8 +64,8 @@ def zcr(frame):
     # (I.e. Remember to remove the mean from the frame!!)
 
     frame = np.array(frame)
-    frame = frame - np.mean(frame)
-    zcr = np.count_nonzero(np.sign(frame[:-1] @ frame[1:].T) == -1)  # Complete
+    frame -= np.mean(frame)
+    zcr = np.count_nonzero(np.sign(frame[:-1] @ frame[1:].T) < 0)  # Complete
 
     return zcr
 
@@ -93,7 +77,7 @@ def one_lag_autocorrelation(frame):
     # Outputs: val: The one-lag autocorrelation coefficient
 
     frame = np.array(frame)
-    frame = frame - np.mean(frame)
+    frame -= np.mean(frame)
     val = np.dot(frame[:-1], frame[1:])  # Complete
 
     return val
@@ -103,6 +87,8 @@ def energy(frame):
     # Compute the energy of a given frame (with mean removed)
     # Inputs: frame: the input signal frame
     # Outputs: energy: Frame energy
+
+    frame -= np.mean(frame)
 
     energy = (
         np.sqrt(np.sum(np.power(frame - np.mean(frame), 2))) / frame.shape[0]
@@ -118,9 +104,13 @@ def add_deltas_deltadeltas(vad_input):
 
     # Delta and Delta-delta filters:
     # https://en.wikipedia.org/wiki/Finite_difference_coefficient
-    filt_dx = sig.lfilter([-1, 0, 1], [])
-    filt_ddx = sig.lfilter([1, -2, 1], [])
+    filt_dx = sig.lfilter([-0.5, 0, 0.5], 1, vad_input)
+    filt_ddx = sig.lfilter([1, -2, 1], 1, vad_input)
 
-    output = None
+    output = np.zeros((3 * vad_input.shape[0], vad_input.shape[1]))
+
+    output[0:5, :] = vad_input
+    output[5:10, :] = filt_dx
+    output[10:15, :] = filt_ddx
 
     return output
