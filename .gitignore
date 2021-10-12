@@ -135,3 +135,9 @@ Sounds
 *.png
 .vscode
 output_targets
+wav/
+*.yml
+*.lst
+*.hf5
+scores_VoxCeleb-1
+*.zip

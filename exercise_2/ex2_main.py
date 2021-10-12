@@ -20,7 +20,7 @@ import scipy.signal as sig
 import numpy as np
 import ex1_windowing_solution as win
 
-import ex2_fundf_functions_solution as fundf
+import ex2_fundf_functions as fundf
 import matplotlib.pyplot as pl
 
 """
