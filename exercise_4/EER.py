@@ -32,7 +32,7 @@ def EER(clients, impostors):
 
 
 # Insert the output file here
-filename = "scores_VoxCeleb-1"
+filename = "scores_VoxCeleb-1.lst"
 
 lst = open(filename, "r")
 

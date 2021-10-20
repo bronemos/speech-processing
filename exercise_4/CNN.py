@@ -112,7 +112,7 @@ def main(opt):
         model_name = "Speaker_Recognition_Exercise.hf5"
         model = load_model(model_name)
 
-        score_file = "scores_VoxCeleb-1"
+        score_file = "scores_VoxCeleb-1.lst"
         functions.predict_by_model(
             opt, model, validation_names, score_file, "Embedding"
         )
